@@ -1,7 +1,7 @@
 {
   "name": "q-advanced-throttle",
-  "version": "1.0.0",
-  "description": "A throttling object built on top of the Q.js package that provides an easy way set concurrenty of promised activity.  derived from christopther down's q-throttle gist (https://gist.github.com/1725325) this version incorporates additional events and returns an outcomes object of the throttle activities broken out by success/failure",
+  "version": "1.0.2",
+  "description": "A throttling object built on top of the Q.js package that provides an easy way set the maximum concurrency (parallel operations) of promised tasks.  derived from christopther down's q-throttle gist (https://gist.github.com/1725325) this version incorporates additional events and returns an outcomes object of the throttle activities broken out by success/failure",
   "main": "q-advanced-throttle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/eric-schleicher/q-advanced-throttle/issues"
   },
-  "homepage": "https://github.com/eric-schleicher/q-advanced-throttle#readme"
+  "homepage": "https://github.com/eric-schleicher/q-advanced-throttle#readme",
+  "dependencies": {
+    "q": "^1.4.1"
+  }
 }
