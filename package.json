@@ -1,6 +1,6 @@
 {
   "name": "q-advanced-throttle",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A throttling object built on top of the Q.js package that provides an easy way set the maximum concurrency (parallel operations) of promised tasks.  derived from christopther down's q-throttle gist (https://gist.github.com/1725325) this version incorporates additional events and returns an outcomes object of the throttle activities broken out by success/failure",
   "main": "q-advanced-throttle.js",
   "scripts": {

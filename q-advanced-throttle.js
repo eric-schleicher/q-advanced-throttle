@@ -13,7 +13,7 @@
  *
  *     var Q = require("q");
  *
- * 	   // Require this module (to add `Q.Throttle` to the `Q` API)
+ *     // Require this module (to add `Q.Throttle` to the `Q` API)
  *     Q.Throttle = require("q-advanced-throttle").Throttle;
  *
  *     // Maximum of 3 unresolved promises at a time
@@ -99,14 +99,14 @@ Throttle.prototype.when = function(args, func)
         //success
         function(fulfilledResult){
             // provide the result to throttle object
-            throttleProgress();
             self.outcomes.fulfilled.push(fulfilledResult);
+            throttleProgress();
         },
         //failures
         function(rejectedResult){
             // provide the result to throttle object
-            throttleProgress();
             self.outcomes.rejected.push(rejectedResult);
+            throttleProgress();
         }
     );
 
@@ -115,7 +115,9 @@ Throttle.prototype.when = function(args, func)
         self.iteration+=1;
         log("iteration " + self.iteration +  " of " + self.heapSize +  " [" + func.name +"]");
         if (self.outcomes.rejected.length+self.outcomes.fulfilled.length===self.heapSize){
-            console.log("we would emit the completed event now");
+            //console.log("we would emit the completed event now");
+            self.emit("done", self.outcomes);
+            return;
         }
         self.emit("progress", self.outcomes);
     }
@@ -135,7 +137,7 @@ Throttle.prototype.when = function(args, func)
         }
         else if (self.count === 0)
         {
-            self.emit("done", self.outcomes);
+            //self.emit("done", self.outcomes);
         }
         else{
             throw new Error("Unhandled error condition; unexpected combination of values for throttle buffer and throttle count")
@@ -148,7 +150,7 @@ Throttle.prototype.when = function(args, func)
             throttleCycle();
         },
         //failure
-        function(err)	{
+        function(err)   {
             throttleCycle();
             self.emit("error", {error:err,results:self.outcomes});
         });
